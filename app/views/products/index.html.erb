@@ -1,0 +1,19 @@
+<h1>Action's Site</h1>
+<h3>List of products</h3>
+<ul>
+	<%@products.each do |product| %>
+		<li>
+			Product => <%=product.title %> 
+			Description => <%=product.description %> 
+			Deadline => <%=product.deadline %> 
+			<form action="products/product" method="POST">
+				<input type="hidden" name="product[id]" value="<%=product.id %>" ></input>
+				<input type="hidden" name="authenticity_token"
+     			 value="<%= form_authenticity_token %>">
+				<button type="submit">Product Page</button>	
+			</form>
+		</li>
+	<%end%>
+</ul>
+
+<%= link_to("Add product", "/products/new") %>
